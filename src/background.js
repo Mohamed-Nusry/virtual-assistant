@@ -5,6 +5,8 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
+const path = require('path')
+
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
@@ -15,6 +17,7 @@ async function createWindow () {
   const win = new BrowserWindow({
     width: 500,
     height: 800,
+    icon: path.join(__dirname, 'favicon.ico'),
     maximizable: false,
     webPreferences: {
 
